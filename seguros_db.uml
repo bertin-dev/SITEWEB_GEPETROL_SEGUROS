@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>a2249d4b-3cfc-4f0f-b808-fddf67220d88.SCHEMA:seguros_db</OriginalElement>
+  <nodes>
+    <node x="425.0" y="1217.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.parent</node>
+    <node x="703.75" y="754.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.sub_headers</node>
+    <node x="21.75" y="988.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.comments</node>
+    <node x="304.75" y="311.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.categories</node>
+    <node x="1105.5" y="11.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.aside</node>
+    <node x="173.75000000000003" y="988.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.videos</node>
+    <node x="1257.0" y="234.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.body</node>
+    <node x="526.75" y="710.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.tags</node>
+    <node x="11.0" y="212.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.users</node>
+    <node x="248.0" y="1217.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.paragraphe</node>
+    <node x="928.5" y="465.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.footer</node>
+    <node x="1412.5" y="11.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.section</node>
+    <node x="733.0" y="432.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.headers</node>
+    <node x="1257.5" y="0.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.caroussel</node>
+    <node x="508.75" y="1042.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.posts_tags</node>
+    <node x="858.75" y="798.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.page</node>
+    <node x="723.0" y="0.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.top_headers</node>
+    <node x="0.0" y="0.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.newsletters</node>
+    <node x="0.0" y="1217.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.online_user</node>
+    <node x="229.0" y="622.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.posts</node>
+    <node x="325.75" y="988.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.images</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.comments" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.posts">
+      <point x="33.0" y="-92.0" />
+      <point x="120.75" y="958.0" />
+      <point x="252.625" y="958.0" />
+      <point x="-70.875" y="158.0" />
+    </edge>
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.videos" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.posts">
+      <point x="-2.8421709430404007E-14" y="-92.0" />
+      <point x="239.75" y="968.0" />
+      <point x="299.875" y="968.0" />
+      <point x="-23.625" y="158.0" />
+    </edge>
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.page" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.footer">
+      <point x="45.25" y="-92.0" />
+      <point x="0.0" y="103.0" />
+    </edge>
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.body" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.aside">
+      <point x="-45.33333333333326" y="-92.0" />
+      <point x="1279.6666666666667" y="209.0" />
+      <point x="1171.5" y="209.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.body" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.caroussel">
+      <point x="0.0" y="-92.0" />
+      <point x="0.0" y="92.0" />
+    </edge>
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.page" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.headers">
+      <point x="-45.25" y="-92.0" />
+      <point x="904.0" y="729.0" />
+      <point x="847.75" y="729.0" />
+      <point x="38.25" y="136.0" />
+    </edge>
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.comments" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.users">
+      <point x="-33.0" y="-92.0" />
+      <point x="-43.75" y="180.0" />
+    </edge>
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.posts_tags" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.posts">
+      <point x="-28.0" y="-38.0" />
+      <point x="536.75" y="958.0" />
+      <point x="394.375" y="958.0" />
+      <point x="70.875" y="158.0" />
+    </edge>
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.sub_headers" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.headers">
+      <point x="0.0" y="-136.0" />
+      <point x="-38.25" y="136.0" />
+    </edge>
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.images" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.posts">
+      <point x="0.0" y="-92.0" />
+      <point x="407.25" y="968.0" />
+      <point x="347.125" y="968.0" />
+      <point x="23.625" y="158.0" />
+    </edge>
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.headers" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.top_headers">
+      <point x="0.0" y="-136.0" />
+      <point x="0.0" y="191.0" />
+    </edge>
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.body" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.section">
+      <point x="45.33333333333326" y="-92.0" />
+      <point x="1370.3333333333333" y="209.0" />
+      <point x="1478.5" y="209.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.users" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.newsletters">
+      <point x="0.0" y="-180.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.posts" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.users">
+      <point x="-47.25" y="-158.0" />
+      <point x="276.25" y="597.0" />
+      <point x="142.25" y="597.0" />
+      <point x="43.75" y="180.0" />
+    </edge>
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.posts" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.categories">
+      <point x="47.25" y="-158.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.posts_tags" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.tags">
+      <point x="28.0" y="-38.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6760463618802318" x="419.6231069625678" y="411.9230402895514" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+
