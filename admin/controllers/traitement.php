@@ -361,7 +361,6 @@ if(isset($_GET['slide'])) {
 /* ==========================================================================
 GESTION DES CATEGORIES
 ========================================================================== */
-
 // Une fois le formulaire envoyé
 if(isset($_GET['categories'])) {
 
@@ -388,6 +387,140 @@ if(isset($_GET['categories'])) {
 
             //$max = $connexion->prepare_request('SELECT id AS max_id FROM headers ORDER BY id DESC LIMIT 1', array());
 
+
+            $message .= 'success';
+        }
+    }
+    echo $message;
+}
+
+
+/* ==========================================================================
+UPDATE CATEGORIES
+========================================================================== */
+// Une fois le formulaire envoyé
+if(isset($_GET['updateCategories'])) {
+
+    if(!isset($_POST['titre_categories']) || empty($_POST['titre_categories'])){
+        $message .= "Veuillez inserer une Catégorie<br />\n";
+    } else {
+
+        nettoieProtect();
+        extract($_POST);
+
+        $connexion = App::getDB();
+        $result = $connexion->rowCount('SELECT id FROM categories WHERE title="'. $_POST['titre_categories'] .'"');
+
+        // Si une erreur survient
+        if($result > 0 ) {
+            $message .= 'Cette catégorie existe déjà';
+        }
+        else {
+
+            $connexion->update('UPDATE categories SET title=:title, description=:description, updated_at=:updated_at WHERE id=:id',
+                array('title'=>$_POST['titre_categories'], 'description'=>$_POST['desc_categories'], 'updated_at'=>time(), 'id' => $_POST['category']));
+
+            //$max = $connexion->prepare_request('SELECT id AS max_id FROM headers ORDER BY id DESC LIMIT 1', array());
+
+
+            $message .= 'success';
+        }
+    }
+    echo $message;
+}
+
+
+/* ==========================================================================
+ADD TAGS
+========================================================================== */
+// Une fois le formulaire envoyé
+if(isset($_GET['tag'])) {
+
+    if(!isset($_POST['titre_tag']) || empty($_POST['titre_tag'])){
+        $message .= "Veuillez inserer un Tag<br />\n";
+    } else {
+
+        nettoieProtect();
+        extract($_POST);
+
+        $connexion = App::getDB();
+        $result = $connexion->rowCount('SELECT id FROM tags WHERE title="'. $_POST['titre_tag'] .'"');
+
+        // Si une erreur survient
+        if($result > 0 ) {
+            $message .= 'Ce tag existe déjà';
+        }
+        else {
+
+            $connexion->insert('INSERT INTO tags(title, created_at)
+                                               VALUES(?, ?)',
+                array($_POST['titre_tag'], time()));
+
+            $message .= 'success';
+        }
+    }
+    echo $message;
+}
+
+
+/* ==========================================================================
+UPDATE TAGS
+========================================================================== */
+// Une fois le formulaire envoyé
+if(isset($_GET['updateTag'])) {
+
+    if(!isset($_POST['titre_tag']) || empty($_POST['titre_tag'])){
+        $message .= "Veuillez inserer un Tag<br />\n";
+    } else {
+
+        nettoieProtect();
+        extract($_POST);
+
+        $connexion = App::getDB();
+        $result = $connexion->rowCount('SELECT id FROM tags WHERE title="'. $_POST['titre_tag'] .'"');
+
+        // Si une erreur survient
+        if($result > 0 ) {
+            $message .= 'Ce tag existe déjà';
+        }
+        else {
+
+            $connexion->update('UPDATE tags SET title=:title, updated_at=:updated_at WHERE id=:id',
+                array('title'=>$_POST['titre_tag'], 'updated_at'=>time(), 'id' => $_POST['tag_id']));
+
+            $message .= 'success';
+        }
+    }
+    echo $message;
+}
+
+/* ==========================================================================
+ADD ARTICLE
+========================================================================== */
+// Une fois le formulaire envoyé
+if(isset($_GET['article'])) {
+
+
+
+    if(!isset($_POST['desc_article']) || empty($_POST['desc_article'])){
+        $message .= "Veuillez inserer un article<br />\n";
+    } else {
+
+        nettoieProtect();
+        extract($_POST);
+
+        $connexion = App::getDB();
+        $result = $connexion->rowCount('SELECT id FROM posts WHERE content ="'. $_POST['desc_article'] .'" OR title ="'.$_POST['titre_article'].'"');
+
+        // Si une erreur survient
+        if($result > 0 ) {
+            $message .= 'Cette '.$_POST['category_id'].' existe déjà';
+        }
+        else {
+
+            $connexion->insert('INSERT INTO posts(title, content, category_id, created_at)
+                                               VALUES(?, ?, ?, ?)',
+                array($_POST['titre_article'], $_POST['desc_article'], $_POST['category_id'], time()));
 
             $message .= 'success';
         }

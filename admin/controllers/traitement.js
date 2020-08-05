@@ -18,7 +18,9 @@ const menu = "Menu";
 const footer = "Pied de page";
 const slide = "Slide";
 const categorie = "Categorie";
-
+const delete_msg = " Supprimé avec succès.";
+const tag = "Tag";
+const update_msg = " Modifié avec succès."
 
 /* ==========================================================================
 GESTION DE L AJOUT DU LOGO, TITRE, ICÖNE
@@ -305,7 +307,7 @@ $(function() {
                     cat.html(categorie + ' ' + success_msg).show();
                     setTimeout(function () {
                         cat.html(categorie +' ' + success_msg).slideDown().hide();
-                        $('body').load('index.php', function() {
+                        $('body').load('list_posts.php', function() {
                         });
                     }, 5000);
 
@@ -317,6 +319,154 @@ $(function() {
                     cat.html(data).show();
                     $('.loader').hide();
                     $('.currentSend').attr('value', 'Publier');
+                }
+            }
+
+        });
+    });
+});
+
+/* ==========================================================================
+UPDATE CATEGORIES
+========================================================================== */
+$(function() {
+    $('#form_update_categories').on('submit', function (e) {
+        /* On empêche le navigateur de soumettre le formulaire*/
+        e.preventDefault();
+        $('.loader').show();
+        $('.currentSend').attr('value', 'En cours...');
+        var $form = $(this);
+        var formdata = (window.FormData) ? new FormData($form[0]) : null;
+        var data = (formdata !== null) ? formdata : $form.serialize();
+
+        $.ajax({
+            url: $form.attr('action'),
+            type: $form.attr('method'),
+            contentType: false, /* obligatoire pour de l'upload*/
+            processData: false, /* obligatoire pour de l'upload*/
+            dataType: 'html', /* selon le retour attendu*/
+            data:data,
+            success:function(data){
+                var cat = $('.rapport');
+                if(data === 'success'){
+                    $('.loader').hide();
+                    cat.removeClass('alert-danger');
+                    cat.addClass('alert-success');
+                    $('.currentSend').attr('value', 'Modifier');
+                    cat.html(categorie + ' ' + update_msg).show();
+                    setTimeout(function () {
+                        cat.html(categorie +' ' + update_msg).slideDown().hide();
+                        $('body').load('list_posts.php', function() {
+                        });
+                    }, 5000);
+
+                } else {
+                    if(cat.hasClass('alert-success')){
+                        cat.removeClass('alert-success');
+                        cat.addClass('alert-danger');
+                    }
+                    cat.html(data).show();
+                    $('.loader').hide();
+                    $('.currentSend').attr('value', 'Modifer');
+                }
+            }
+
+        });
+    });
+});
+
+
+/* ==========================================================================
+ADD TAGS
+========================================================================== */
+$(function() {
+    $('#form_add_tag').on('submit', function (e) {
+        /* On empêche le navigateur de soumettre le formulaire*/
+        e.preventDefault();
+        $('.loader').show();
+        $('.currentSend').attr('value', 'En cours...');
+        var $form = $(this);
+        var formdata = (window.FormData) ? new FormData($form[0]) : null;
+        var data = (formdata !== null) ? formdata : $form.serialize();
+
+        $.ajax({
+            url: $form.attr('action'),
+            type: $form.attr('method'),
+            contentType: false, /* obligatoire pour de l'upload*/
+            processData: false, /* obligatoire pour de l'upload*/
+            dataType: 'html', /* selon le retour attendu*/
+            data:data,
+            success:function(data){
+                var cat = $('.rapport');
+                if(data === 'success'){
+                    $('.loader').hide();
+                    cat.removeClass('alert-danger');
+                    cat.addClass('alert-success');
+                    $('.currentSend').attr('value', 'Ajouter');
+                    cat.html(tag + ' ' + success_msg).show();
+                    setTimeout(function () {
+                        cat.html(tag +' ' + success_msg).slideDown().hide();
+                        $('body').load('list_posts.php', function() {
+                        });
+                    }, 25000);
+
+                } else {
+                    if(cat.hasClass('alert-success')){
+                        cat.removeClass('alert-success');
+                        cat.addClass('alert-danger');
+                    }
+                    cat.html(data).show();
+                    $('.loader').hide();
+                    $('.currentSend').attr('value', 'Ajouter');
+                }
+            }
+
+        });
+    });
+});
+
+/* ==========================================================================
+UPDATE TAGS
+========================================================================== */
+$(function() {
+    $('#form_update_tag').on('submit', function (e) {
+        /* On empêche le navigateur de soumettre le formulaire*/
+        e.preventDefault();
+        $('.loader').show();
+        $('.currentSend').attr('value', 'En cours...');
+        var $form = $(this);
+        var formdata = (window.FormData) ? new FormData($form[0]) : null;
+        var data = (formdata !== null) ? formdata : $form.serialize();
+
+        $.ajax({
+            url: $form.attr('action'),
+            type: $form.attr('method'),
+            contentType: false, /* obligatoire pour de l'upload*/
+            processData: false, /* obligatoire pour de l'upload*/
+            dataType: 'html', /* selon le retour attendu*/
+            data:data,
+            success:function(data){
+                var cat = $('.rapport');
+                if(data === 'success'){
+                    $('.loader').hide();
+                    cat.removeClass('alert-danger');
+                    cat.addClass('alert-success');
+                    $('.currentSend').attr('value', 'Ajouter');
+                    cat.html(tag + ' ' + update_msg).show();
+                    setTimeout(function () {
+                        cat.html(tag +' ' + update_msg).slideDown().hide();
+                        $('body').load('list_posts.php', function() {
+                        });
+                    }, 5000);
+
+                } else {
+                    if(cat.hasClass('alert-success')){
+                        cat.removeClass('alert-success');
+                        cat.addClass('alert-danger');
+                    }
+                    cat.html(data).show();
+                    $('.loader').hide();
+                    $('.currentSend').attr('value', 'Ajouter');
                 }
             }
 

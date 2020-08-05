@@ -1,5 +1,6 @@
 <?php require_once('page_number.php'); ?>
 
+
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
@@ -25,35 +26,44 @@
 
           <div class="col-lg-8 entries">
 
-            <article class="entry" data-aos="fade-up">
+              <?php
+              foreach (App::getDB()->query('SELECT * FROM posts') AS $post):
+                  ?>
 
-              <div class="entry-img">
-                <img src="assets/img/blog-1.jpg" alt="" class="img-fluid">
-              </div>
+                  <article class="entry" data-aos="fade-up">
 
-              <h2 class="entry-title">
-                <a href="blog-single.php">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia reiciendis</a>
-              </h2>
+                      <div class="entry-img">
+                          <img src="assets/img/blog-1.jpg" alt="" class="img-fluid">
+                      </div>
 
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.php">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.php"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.php">12 Comments</a></li>
-                </ul>
-              </div>
+                      <h2 class="entry-title">
+                          <a href="blog-single.php"><?=$post->title;?></a>
+                      </h2>
 
-              <div class="entry-content">
-                <p>
-                  Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                  Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
-                </p>
-                <div class="read-more">
-                  <a href="blog-single.php">Read More</a>
-                </div>
-              </div>
+                      <div class="entry-meta">
+                          <ul>
+                              <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.php">John Doe</a></li>
+                              <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.php"><time datetime="2020-01-01"><?=date('d/m/Y', $post->created_at);?></time></a></li>
+                              <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.php">12 Comments</a></li>
+                          </ul>
+                      </div>
 
-            </article><!-- End blog entry -->
+                      <div class="entry-content">
+                          <p>
+                              <?=$post->content;?>
+                          </p>
+                          <div class="read-more">
+                              <a href="blog-single.php">Lire la Suite</a>
+                          </div>
+                      </div>
+
+                  </article><!-- End blog entry -->
+
+              <?php
+              endforeach;
+              ?>
+
+
 
             <article class="entry" data-aos="fade-up">
 
@@ -159,84 +169,7 @@
 
           <div class="col-lg-4">
 
-            <div class="sidebar" data-aos="fade-left">
-
-              <h3 class="sidebar-title">Search</h3>
-              <div class="sidebar-item search-form">
-                <form action="">
-                  <input type="text">
-                  <button type="submit"><i class="icofont-search"></i></button>
-                </form>
-
-              </div><!-- End sidebar search formn-->
-
-              <h3 class="sidebar-title">Categories</h3>
-              <div class="sidebar-item categories">
-                <ul>
-                  <li><a href="#">General <span>(25)</span></a></li>
-                  <li><a href="#">Lifestyle <span>(12)</span></a></li>
-                  <li><a href="#">Travel <span>(5)</span></a></li>
-                  <li><a href="#">Design <span>(22)</span></a></li>
-                  <li><a href="#">Creative <span>(8)</span></a></li>
-                  <li><a href="#">Educaion <span>(14)</span></a></li>
-                </ul>
-
-              </div><!-- End sidebar categories-->
-
-              <h3 class="sidebar-title">Recent Posts</h3>
-              <div class="sidebar-item recent-posts">
-                <div class="post-item clearfix">
-                  <img src="assets/img/blog-recent-posts-1.jpg" alt="">
-                  <h4><a href="blog-single.php">Nihil blanditiis at in nihil autem</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/blog-recent-posts-2.jpg" alt="">
-                  <h4><a href="blog-single.php">Quidem autem et impedit</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/blog-recent-posts-3.jpg" alt="">
-                  <h4><a href="blog-single.php">Id quia et et ut maxime similique occaecati ut</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/blog-recent-posts-4.jpg" alt="">
-                  <h4><a href="blog-single.php">Laborum corporis quo dara net para</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/blog-recent-posts-5.jpg" alt="">
-                  <h4><a href="blog-single.php">Et dolores corrupti quae illo quod dolor</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-              </div><!-- End sidebar recent posts-->
-
-              <h3 class="sidebar-title">Tags</h3>
-              <div class="sidebar-item tags">
-                <ul>
-                  <li><a href="#">App</a></li>
-                  <li><a href="#">IT</a></li>
-                  <li><a href="#">Business</a></li>
-                  <li><a href="#">Business</a></li>
-                  <li><a href="#">Mac</a></li>
-                  <li><a href="#">Design</a></li>
-                  <li><a href="#">Office</a></li>
-                  <li><a href="#">Creative</a></li>
-                  <li><a href="#">Studio</a></li>
-                  <li><a href="#">Smart</a></li>
-                  <li><a href="#">Tips</a></li>
-                  <li><a href="#">Marketing</a></li>
-                </ul>
-
-              </div><!-- End sidebar tags-->
-
-            </div><!-- End sidebar -->
+              <?php require 'blog_sidebar.php';?>
 
           </div><!-- End blog sidebar -->
 

@@ -41,7 +41,7 @@
                 <a class="collapse-item" href="#" data-toggle="modal" data-target="#sous_menu_modal">Pied de page</a>
                 <a class="collapse-item" href="#" data-toggle="modal" data-target="#slide">Slides</a>
                 <a class="collapse-item" href="buttons.html">Slogan</a>
-                <a class="collapse-item" href="cards.html">Icône du site</a>
+                <a class="collapse-item" href="list_posts.php">Icône du site</a>
             </div>
         </div>
     </li>
@@ -75,9 +75,9 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Modules </h6>
                 <a class="collapse-item" href="#" data-toggle="modal" data-target="#caterories">Catégories</a>
-                <a class="collapse-item" href="#" data-toggle="modal" data-target="#footer_b1">Tags</a>
+                <a class="collapse-item" href="#" data-toggle="modal" data-target="#tag">Tags</a>
                 <div class="collapse-divider"></div>
-                <a class="collapse-item" href="#" data-toggle="modal" data-target="#footer_b2">Posté un article</a>
+                <a class="collapse-item" href="article.php">Posté un article</a>
                 <a class="collapse-item" href="#" data-toggle="modal" data-target="#footer_b3">Liste des Postes</a>
             </div>
         </div>

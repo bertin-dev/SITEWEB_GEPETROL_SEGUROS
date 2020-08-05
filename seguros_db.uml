@@ -10,14 +10,14 @@
     <node x="1105.5" y="11.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.aside</node>
     <node x="173.75000000000003" y="988.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.videos</node>
     <node x="1257.0" y="234.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.body</node>
-    <node x="526.75" y="710.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.tags</node>
+    <node x="508.75" y="1042.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.posts_tags</node>
     <node x="11.0" y="212.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.users</node>
     <node x="248.0" y="1217.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.paragraphe</node>
     <node x="928.5" y="465.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.footer</node>
     <node x="1412.5" y="11.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.section</node>
     <node x="733.0" y="432.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.headers</node>
     <node x="1257.5" y="0.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.caroussel</node>
-    <node x="508.75" y="1042.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.posts_tags</node>
+    <node x="526.75" y="710.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.tags</node>
     <node x="858.75" y="798.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.page</node>
     <node x="723.0" y="0.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.top_headers</node>
     <node x="0.0" y="0.0">a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.newsletters</node>
@@ -93,23 +93,25 @@
       <point x="0.0" y="-180.0" />
       <point x="0.0" y="81.0" />
     </edge>
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.posts" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.categories">
+      <point x="47.25" y="-158.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
     <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.posts" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.users">
       <point x="-47.25" y="-158.0" />
       <point x="276.25" y="597.0" />
       <point x="142.25" y="597.0" />
       <point x="43.75" y="180.0" />
     </edge>
-    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.posts" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.categories">
-      <point x="47.25" y="-158.0" />
-      <point x="0.0" y="81.0" />
-    </edge>
     <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.posts_tags" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.tags">
       <point x="28.0" y="-38.0" />
       <point x="0.0" y="70.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.6760463618802318" x="419.6231069625678" y="411.9230402895514" />
-  <SelectedNodes />
+  <settings layout="Hierarchic Group" zoom="0.6760463618802318" x="772.5000000000001" y="766.5" />
+  <SelectedNodes>
+    <node>a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.parent</node>
+  </SelectedNodes>
   <Categories>
     <Category>Key columns</Category>
     <Category>Columns</Category>
