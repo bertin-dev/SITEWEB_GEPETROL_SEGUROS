@@ -500,7 +500,7 @@ ADD ARTICLE
 // Une fois le formulaire envoyé
 if(isset($_GET['article'])) {
 
-
+    $_POST['desc_article'] = htmlspecialchars($_POST['desc_article'], ENT_QUOTES);
 
     if(!isset($_POST['desc_article']) || empty($_POST['desc_article'])){
         $message .= "Veuillez inserer un article<br />\n";
@@ -518,9 +518,78 @@ if(isset($_GET['article'])) {
         }
         else {
 
+
+            //on verifi si l'adresse de l'image a ete bien definit
+            if(isset($_FILES['imgInp']['name']) AND !empty($_FILES['imgInp']['name']))
+            {
+                /*$file = $_FILES["files"]['tmp_name'];
+                list($width, $height) = getimagesize($file);
+
+                if($width > "180" || $height > "70") {
+                    echo "Error : image size must be 180 x 70 pixels.";
+                    exit;
+                }*/
+
+                //on verifi la taille de l'image
+                if($_FILES['imgInp']['size']>=1000)
+                {
+                    $extensions_valides=Array('jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG');
+                    //la fonctions strrchr( $chaine,'.') renvoit l'extension avec le point
+                    //la fonction substtr($chaine,1) ingore la premiere caractere de la chaine
+                    //la fonction strtolower($chaine) renvoit la chaine en minuscule
+                    $extension_upload=strtolower(substr(strrchr($_FILES['imgInp']['name'],'.'),1));
+                    //on verifi si l'extension_upload est valide
+
+                    if(in_array($extension_upload,$extensions_valides))
+                    {
+                        $token=md5(uniqid(rand(),true));
+                        $imgArticle="../../public/assets/img/article/{$token}.{$extension_upload}";
+                        // $chemin="blog_img/{$token}.{$extension_upload}";
+                        //on deplace du serveur au disque dur
+
+                        if(move_uploaded_file($_FILES['imgInp']['tmp_name'],$imgArticle))
+                        {
+                            // La photo est la source
+                            if($extension_upload=='jpg' OR $extension_upload=='jpeg' OR $extension_upload=='JPG' OR $extension_upload=='JPEG')
+                            {$source = imagecreatefromjpeg($imgArticle);}
+                            else{$source = imagecreatefrompng($imgArticle);}
+                            $destination = imagecreatetruecolor(150, 150); // On crée la miniature vide
+
+                            // Les fonctions imagesx et imagesy renvoient la largeur et la hauteur d'une image
+                            $largeur_source = imagesx($source);
+                            $hauteur_source = imagesy($source);
+                            $largeur_destination = imagesx($destination);
+                            $hauteur_destination = imagesy($destination);
+                            //$chemin0="blog_img/miniature/{$token}.{$extension_upload}";
+                            $imgArticleIcon="../../public/assets/img/article/miniature/{$token}.{$extension_upload}";
+                            // On crée la miniature
+                            imagecopyresampled($destination, $source, 0, 0, 0, 0, $largeur_destination, $hauteur_destination, $largeur_source, $hauteur_source);
+                            imagejpeg($destination,$imgArticleIcon);
+                        } else {
+                            $message .= "no deplace<br/>";
+                        }
+                    } else {
+                        $message .= "no extensions<br/>";
+                    }
+                } else {
+                    $message .= "no size<br/>";
+                }
+            } else {
+                $message .= "no defined<br/>";
+            }
+
+            //save posts
             $connexion->insert('INSERT INTO posts(title, content, category_id, created_at)
                                                VALUES(?, ?, ?, ?)',
                 array($_POST['titre_article'], $_POST['desc_article'], $_POST['category_id'], time()));
+
+            //last post selected
+            $max = $connexion->prepare_request('SELECT id AS max_id FROM posts ORDER BY id DESC LIMIT 1', array());
+
+            //save image
+            $connexion->insert('INSERT INTO images(url_miniature, url, created_at, post_id)
+                                               VALUES(?, ?, ?, ?)',
+                array($imgArticleIcon, $imgArticle, time(), $max['max_id']));
 
             $message .= 'success';
         }

@@ -173,6 +173,10 @@
               </p>
             </div><!-- End blog author bio -->
 
+
+
+              <!--COMMENTAIRES-->
+
             <div class="blog-comments" data-aos="fade-up">
 
               <h4 class="comments-count">8 Comments</h4>
@@ -246,27 +250,27 @@
               <div class="reply-form">
                 <h4>Leave a Reply</h4>
                 <p>Your email address will not be published. Required fields are marked * </p>
-                <form action="">
+                  <div id="rapport_comment" class="alert alert-danger" style="display:none;"></div>
+                <form id="form_comment" action="forms/contact.php" role="form" class="php-email-form" onsubmit="return false;">
                   <div class="row">
                     <div class="col-md-6 form-group">
-                      <input name="name" type="text" class="form-control" placeholder="Your Name*">
+                      <input id="name" name="name" type="text" class="form-control" placeholder="Your Name*" data-rule="minlen:4" data-msg="s'il vous veuillez entrer au moins 4 charactères">
+                        <small id="validate_name" class="validate"></small>
                     </div>
                     <div class="col-md-6 form-group">
-                      <input name="email" type="text" class="form-control" placeholder="Your Email*">
+                      <input id="email" name="email" type="text" class="form-control" placeholder="Your Email*" data-rule="email" data-msg="s'il vous plait veuillez entrer un email valid">
+                        <small id="validate_email" class="validate"></small>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col form-group">
-                      <input name="website" type="text" class="form-control" placeholder="Your Website">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col form-group">
-                      <textarea name="comment" class="form-control" placeholder="Your Comment*"></textarea>
-                    </div>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Post Comment</button>
 
+                  <div class="row">
+                    <div class="col form-group">
+                      <textarea id="comment" name="comment" class="form-control" placeholder="Votre commentaire*" data-rule="required" data-msg="S'il vous plait veuiller entrer quelques"></textarea>
+                        <small id="validate_comment" class="validate"></small>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary currentSend">Post Comment</button>
+                    <center><img src="../admin/img/loader.gif" class="loader" style="display:none;"></center>
                 </form>
 
               </div>
@@ -277,84 +281,7 @@
 
           <div class="col-lg-4">
 
-            <div class="sidebar" data-aos="fade-left">
-
-              <h3 class="sidebar-title">Search</h3>
-              <div class="sidebar-item search-form">
-                <form action="">
-                  <input type="text">
-                  <button type="submit"><i class="icofont-search"></i></button>
-                </form>
-
-              </div><!-- End sidebar search formn-->
-
-              <h3 class="sidebar-title">Categories</h3>
-              <div class="sidebar-item categories">
-                <ul>
-                  <li><a href="#">General <span>(25)</span></a></li>
-                  <li><a href="#">Lifestyle <span>(12)</span></a></li>
-                  <li><a href="#">Travel <span>(5)</span></a></li>
-                  <li><a href="#">Design <span>(22)</span></a></li>
-                  <li><a href="#">Creative <span>(8)</span></a></li>
-                  <li><a href="#">Educaion <span>(14)</span></a></li>
-                </ul>
-
-              </div><!-- End sidebar categories-->
-
-              <h3 class="sidebar-title">Recent Posts</h3>
-              <div class="sidebar-item recent-posts">
-                <div class="post-item clearfix">
-                  <img src="assets/img/blog-recent-posts-1.jpg" alt="">
-                  <h4><a href="blog-single.php">Nihil blanditiis at in nihil autem</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/blog-recent-posts-2.jpg" alt="">
-                  <h4><a href="blog-single.php">Quidem autem et impedit</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/blog-recent-posts-3.jpg" alt="">
-                  <h4><a href="blog-single.php">Id quia et et ut maxime similique occaecati ut</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/blog-recent-posts-4.jpg" alt="">
-                  <h4><a href="blog-single.php">Laborum corporis quo dara net para</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-                <div class="post-item clearfix">
-                  <img src="assets/img/blog-recent-posts-5.jpg" alt="">
-                  <h4><a href="blog-single.php">Et dolores corrupti quae illo quod dolor</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-              </div><!-- End sidebar recent posts-->
-
-              <h3 class="sidebar-title">Tags</h3>
-              <div class="sidebar-item tags">
-                <ul>
-                  <li><a href="#">App</a></li>
-                  <li><a href="#">IT</a></li>
-                  <li><a href="#">Business</a></li>
-                  <li><a href="#">Business</a></li>
-                  <li><a href="#">Mac</a></li>
-                  <li><a href="#">Design</a></li>
-                  <li><a href="#">Office</a></li>
-                  <li><a href="#">Creative</a></li>
-                  <li><a href="#">Studio</a></li>
-                  <li><a href="#">Smart</a></li>
-                  <li><a href="#">Tips</a></li>
-                  <li><a href="#">Marketing</a></li>
-                </ul>
-
-              </div><!-- End sidebar tags-->
-
-            </div><!-- End sidebar -->
+              <?php require 'blog_sidebar.php';?>
 
           </div><!-- End blog sidebar -->
 
@@ -368,6 +295,249 @@
   <!-- ======= Footer ======= -->
   <?php include('template/footer.php'); ?>
   <!-- End Footer -->
+<script>
+    $(function () {
+
+        var cat = $('#rapport_comment');
+
+        $('#form_comment input, #form_comment textarea').focus(function () {
+            cat.fadeOut(800);
+        });
+
+        $('#name').keyup(function () {
+            name();
+        });
+
+        $('#email').keyup(function () {
+            email();
+        });
+
+        $('#comment').keyup(function () {
+            comment();
+        });
+        //fonction de verification du Nom en ajax
+        function name() {
+            var nom = $('#name');
+            var validate = $('#validate_name');
+            $.ajax({
+                type: 'post',
+                url: '../core/controller/verification.php?comment=comment',
+                data: {
+                    'name': nom.val()
+                },
+                success: function (data) {
+
+                    if(data=='success'){
+
+                        if(nom.hasClass('is-invalid')){
+                            nom.removeClass('is-invalid');
+                            nom.addClass('is-valid');
+                            //$('#valid-feedback').html(data);
+                        }
+                      return true;
+                    }
+                    else{
+
+                        if(nom.hasClass('is-valid')){
+                            nom.removeClass('is-valid');
+                            nom.addClass('is-invalid');
+                        } else{
+                            nom.addClass('is-invalid');
+                        }
+
+                        validate.removeClass('valid-feedback');
+                        validate.addClass('invalid-feedback');
+                        validate.html(data).show();
+
+                        validate.css({
+                            'color': 'red',
+                            'font-weight': 'bold',
+                            'margin': 'initial',
+                            'padding': 'initial',
+                            'font-size': '65%'
+                        }).html(data);
+
+                        /* setTimeout(function () {
+                             $('#output_visitor').hide();
+
+                         }, 7000);*/
+                    }
+                }
+            });
+
+
+        }
+
+
+        //fonction de verification du Nom en ajax
+        function email() {
+            var email = $('#email');
+            var validate = $('#validate_email');
+            $.ajax({
+                type: 'post',
+                url: '../core/controller/verification.php?comment=comment',
+                data: {
+                    'email': email.val()
+                },
+                success: function (data) {
+                    if(data=='success'){
+
+                        if(email.hasClass('is-invalid')){
+                            email.removeClass('is-invalid');
+                            email.addClass('is-valid');
+                            //$('#valid-feedback').html(data);
+                        }
+                       return true;
+                    }
+                    else{
+
+                        if(email.hasClass('is-valid')){
+                            email.removeClass('is-valid');
+                            email.addClass('is-invalid');
+                        } else{
+                            email.addClass('is-invalid');
+                        }
+
+                        validate.removeClass('valid-feedback');
+                        validate.addClass('invalid-feedback');
+                        validate.html(data).show();
+
+                        validate.css({
+                            'color': 'red',
+                            'font-weight': 'bold',
+                            'margin': 'initial',
+                            'padding': 'initial',
+                            'font-size': '65%'
+                        }).html(data);
+
+                        /* setTimeout(function () {
+                             $('#output_email_visitor').hide();
+
+                         }, 7000);*/
+                    }
+                }
+            });
+
+
+        }
+
+        //fonction de verification du MESSAGE en ajax
+        function comment() {
+            var comment = $('#comment');
+            var validate = $('#validate_comment');
+            $.ajax({
+                type: 'post',
+                url: '../core/controller/verification.php?comment=comment',
+                data: {
+                    'comment': comment.val()
+                },
+                success: function (data) {
+                    if(data=='success'){
+
+                        if(comment.hasClass('is-invalid')){
+                            comment.removeClass('is-invalid');
+                            comment.addClass('is-valid');
+                        }
+                        return true;
+                    }
+                    else{
+
+                        if(comment.hasClass('is-valid')){
+                            comment.removeClass('is-valid');
+                            comment.addClass('is-invalid');
+                        } else{
+                            comment.addClass('is-invalid');
+                        }
+
+                        validate.removeClass('valid-feedback');
+                        validate.addClass('invalid-feedback');
+                        validate.html(data).show();
+
+                        validate.css({
+                            'color': 'red',
+                            'font-weight': 'bold',
+                            'margin': 'initial',
+                            'padding': 'initial',
+                            'font-size': '65%'
+                        }).html(data);
+
+                        /* setTimeout(function () {
+                             $('#output_message_visitor').hide();
+
+                         }, 7000);*/
+                    }
+                }
+            });
+
+
+        }
+
+
+        $('#form_comment').submit(function () {
+            var name = $('#name').val(), email = $('#email').val(), comment = $('#comment').val();
+            $('.loader').show();
+            $('.currentSend').html('Encours...');
+
+
+            if (name == '' || email == '' || comment == '') {
+                cat.html("Veuillez remplir tous les champs").show();
+            }
+            else {
+                var $form = $(this);
+                var formdata = (window.FormData) ? new FormData($form[0]) : null;
+                var donnee = (formdata !== null) ? formdata : $form.serialize();
+
+                $.ajax({
+                    type: 'post',
+                    url: '../Core/Controller/submit.php?comment=comment',
+                    contentType: false, // obligatoire pour de l'upload
+                    processData: false, // obligatoire pour de l'upload
+                    data: donnee,
+                    beforeSend: function () {
+                        $('#enreg_visitor').attr('value', 'En cours...');
+                        $('#load_data_visitor').html('<div class="fa-2x" style="display: block;"><i class="fa fa-spinner fa-spin"></i></div>');
+                    },
+                    success: function (data) {
+                        if(data != 'success'){
+                            $('#enreg_visitor').attr('value', 'Envoyer');
+                            $('#load_data_visitor').html('<div class="fa-2x" style="display: none;"><i class="fa fa-spinner fa-spin"></i></div>');
+
+                            $('body').notif({
+                                title: 'Message d\'erreur',
+                                content: data,
+                                img: 'img/bertin-mounok.png',
+                                cls: 'error1'
+                            });
+                        }
+                        else {
+                            $('#enreg_visitor').attr('value', 'Envoyer');
+                            $('#load_data_visitor').html('<div class="fa-2x" style="display: none;"><i class="fa fa-spinner fa-spin"></i></div>');
+
+                            $('body').notif({
+                                title: 'Opération Réussie',
+                                content: 'Merci de Nous avoir fait Confiance !',
+                                img: 'img/bertin-mounok.png',
+                                cls: 'success1'
+                            });
+                            /* setTimeout(function () {
+                                 $('#output_visitor').fadeOut().hide();
+
+                             }, 7000);*/
+                        }
+                    }
+
+                });
+
+            }
+
+
+        });
+
+
+
+    });
+
+</script>
 
 </body>
 

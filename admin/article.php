@@ -26,6 +26,33 @@ require '../app/config/Config_Server.php';
     <link href="wysibb/src/css/wysiwyg.css" rel="stylesheet">
     <link href="wysibb/src/css/highlight.min.css" rel="stylesheet">
 
+
+    <style>
+        .btn-file {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+
+        #img-upload{
+            width: 100%;
+        }
+    </style>
+
 </head>
 
 <body class="bg-gradient-primary">
@@ -47,9 +74,9 @@ require '../app/config/Config_Server.php';
                     <h1 class="h4 text-gray-900 mb-4">Poster un Article!</h1>
                       <div class="alert alert-danger rapport" style="display:none;"></div>
                   </div>
-                  <form class="user" role="form" id="form_article">
+                  <form class="user" role="form" id="form_article" enctype="multipart/form-data">
                       <div class="form-group">
-                          <label class="my-1 mr-2" for="category_id">Selectionner la Categorie Concerné</label>
+                          <label class="my-1 mr-2" for="category_id">Selectionner une catégorie</label>
                           <select class="custom-select my-1 mr-sm-2" id="category_id" name="category_id" style="font-size: 15px!important;">
                               <?php
                               foreach (App::getDB()->query('SELECT id, title FROM categories ORDER BY id DESC') AS $menu):
@@ -60,11 +87,31 @@ require '../app/config/Config_Server.php';
                       </div>
 
                       <div class="form-group">
-                          <label for="titre_article">Titre de votre article</label><input type="text" class="form-control" id="titre_article" name="titre_article" aria-describedby="titre_article" placeholder="Titre de l'article">
+                          <label for="titre_article">Titre de votre article</label><input type="text" class="form-control" id="titre_article" name="titre_article" aria-describedby="titre_article" placeholder="Titre de l'article" required>
+                      </div>
+
+
+                      <div class="form-group"><label>Page de couverture</label>
+
+                          <div class="col-lg-6">
+                              <div class="input-group">
+                                  <span class="input-group-btn">
+                                  <span class="btn btn-default btn-file">Selectionner une image…
+                                      <input type="file" id="imgInp" name="imgInp" required>
+                                  </span>
+                                  </span>
+                                  <input type="text" class="form-control" readonly>
+                              </div>
+                          </div>
+                          <div class="col-lg-6">
+                              <img id='img-upload'/>
+                          </div>
+
                       </div>
 
                       <div class="form-group">
-                          <label for="desc_article">Décrivez votre article</label><textarea name="desc_article" id="desc_article" class="form-control" cols="30" rows="10"></textarea>
+                          <label for="desc_article">Décrivez votre article</label>
+                          <textarea name="desc_article" id="desc_article" class="form-control" cols="30" rows="10" required></textarea>
                       </div>
 
                     <hr>
@@ -118,6 +165,10 @@ ADD ARTICLE
 
       const article = " Article"
       const result_article = "Veuillez inserer un titre à votre article"
+      const success_msg = " publié avec succès.";
+      const delete_msg = " Supprimé avec succès.";
+      const update_msg = " Modifié avec succès."
+
       $(function() {
 
           $('#form_article input').focus(function () {
@@ -140,7 +191,7 @@ ADD ARTICLE
                   contentType: false, /* obligatoire pour de l'upload*/
                   processData: false, /* obligatoire pour de l'upload*/
                   dataType: 'html', /* selon le retour attendu*/
-                      data: data,
+                  data: data,
                   success:function(data){
                       var cat = $('.rapport');
                       if(data === 'success'){
@@ -167,6 +218,43 @@ ADD ARTICLE
                   }
 
               });
+          });
+      });
+
+
+      $(document).ready( function() {
+          $(document).on('change', '.btn-file :file', function() {
+              var input = $(this),
+                  label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+              input.trigger('fileselect', [label]);
+          });
+
+          $('.btn-file :file').on('fileselect', function(event, label) {
+
+              var input = $(this).parents('.input-group').find(':text'),
+                  log = label;
+
+              if( input.length ) {
+                  input.val(log);
+              } else {
+                  if( log ) alert(log);
+              }
+
+          });
+          function readURL(input) {
+              if (input.files && input.files[0]) {
+                  var reader = new FileReader();
+
+                  reader.onload = function (e) {
+                      $('#img-upload').attr('src', e.target.result);
+                  }
+
+                  reader.readAsDataURL(input.files[0]);
+              }
+          }
+
+          $("#imgInp").change(function(){
+              readURL(this);
           });
       });
 

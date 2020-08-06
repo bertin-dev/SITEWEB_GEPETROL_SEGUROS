@@ -197,3 +197,87 @@
   });
 
 })(jQuery);
+
+
+
+//Traitement de la partie dynamique (BLOG)
+$(function () {
+
+  //chargement dynamique des Articles
+  var myArticles =  $('#articles');
+  myArticles.on('click', '.link_articles', function (e) {
+    e.preventDefault();
+    var content = $(this).attr('data');
+    var tab = content.split('&');
+    eval(tab[0]);
+    if(articles==='')
+      return;
+    $.ajax({
+      url: '../core/controller/verification.php',
+      method: 'POST',
+      data: {
+        articles_click: articles
+      },
+      dataType: 'text',
+      beforeSend: function () {
+        $('.loader_blog').show();
+
+
+
+      },
+      success:function (data) {
+        myArticles.html(data);
+        $('.loader_blog').hide();
+      },
+      error: function(){
+        console.log('Erreur de Chargement des Articles');
+      },
+      complete: function () {
+        $('.loader_blog').hide();
+        load_comments();
+      }
+    });
+
+  });
+
+
+
+  //chargement dynamique de la Pagination
+  $('.pagination_link').on('click', function (e) {
+    e.preventDefault();
+    var content = $(this).attr('data');
+    var tab = content.split('&');
+    eval(tab[0]);
+    eval(tab[1]);
+    alert(pages);
+    alert(MessagesParPage);
+    if(pages==='' || MessagesParPage==='')
+      return;
+    $.ajax({
+      url: '../Core/Controller/verification.php',
+      method: 'POST',
+      data: {
+        pagination: pages,
+        nbre_Article: MessagesParPage
+      },
+      dataType: 'text',
+      beforeSend: function () {
+        $('.loader_blog').show();
+      },
+      success:function (data) {
+        content_blog.html(data);
+      },
+      error: function(data){
+        console.log('Erreur de Chargement des Paginations');
+      },
+      complete: function (data) {
+        $('.loader_blog').hide();
+      }
+    });
+
+  });
+
+});
+
+
+

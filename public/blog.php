@@ -24,106 +24,60 @@
 
         <div class="row">
 
-          <div class="col-lg-8 entries">
+          <div id="articles" class="col-lg-8 entries">
 
               <?php
-              foreach (App::getDB()->query('SELECT * FROM posts') AS $post):
+              $nombreDeMessagesParPage = 5; // Essayez de changer ce nombre pour voir :o)
+              $pages = 1; // On se met sur la page 1 (par défaut)
+              // On calcule le numéro du premier message qu'on prend pour le LIMIT de MySQL
+              $premierMessageAafficher = ($pages - 1) * $nombreDeMessagesParPage;
+
+              $post = App::getDB()->compteur_start_end('SELECT posts.id AS id_posts, title, content, post_type, likes, dislike, favourited, posts.created_at,
+                                                            user_id, category_id, images.id AS id_images, url_miniature, url FROM posts
+                                                     INNER JOIN images
+                                                     ON posts.id=images.post_id
+                                                     ORDER BY posts.id DESC');
+              $post->bindParam(':offset', $premierMessageAafficher , PDO::PARAM_INT);
+              $post->bindParam(':limit', $nombreDeMessagesParPage, PDO::PARAM_INT);
+              $post->execute();
+              while ($post_item = $post->fetch()) {
                   ?>
 
                   <article class="entry" data-aos="fade-up">
 
                       <div class="entry-img">
-                          <img src="assets/img/blog-1.jpg" alt="" class="img-fluid">
+                          <?php
+                          $myImg = str_replace('../../public/', '', $post_item['url']);
+                          ?>
+                          <img src="<?=$myImg;?>" alt="<?=$post->title;?>" title="<?=$post->title;?>" class="img-fluid">
                       </div>
 
                       <h2 class="entry-title">
-                          <a href="blog-single.php"><?=$post->title;?></a>
+                          <a data="articles=<?=$post_item['id_posts'];?>" href="#" class="link_articles"><?=$post_item['title'];?></a>
                       </h2>
 
                       <div class="entry-meta">
                           <ul>
-                              <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.php">John Doe</a></li>
-                              <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.php"><time datetime="2020-01-01"><?=date('d/m/Y', $post->created_at);?></time></a></li>
-                              <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.php">12 Comments</a></li>
+                              <li class="d-flex align-items-center"><i class="icofont-user"></i> <a data="articles=<?=$post_item['id_posts'];?>" href="#">John Doe</a></li>
+                              <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a data="articles=<?=$post_item['id_posts'];?>" href="#"><time datetime="2020-01-01"><?=date('F j, Y', $post_item['created_at']);?></time></a></li>
+                              <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a data="articles=<?=$post_item['id_posts'];?>" href="#">12 Comments</a></li>
                           </ul>
                       </div>
 
                       <div class="entry-content">
                           <p>
-                              <?=$post->content;?>
+                              <?=htmlspecialchars_decode($post_item['content']);?>
                           </p>
                           <div class="read-more">
-                              <a href="blog-single.php">Lire la Suite</a>
+                              <a data="articles=<?=$post_item['id_posts'];?>" tabindex="-1" class="link_articles" href="#" title="Lire la suite">Lire la Suite</a>
                           </div>
                       </div>
 
                   </article><!-- End blog entry -->
 
               <?php
-              endforeach;
+              }
               ?>
-
-
-
-            <article class="entry" data-aos="fade-up">
-
-              <div class="entry-img">
-                <img src="assets/img/blog-2.jpg" alt="" class="img-fluid">
-              </div>
-
-              <h2 class="entry-title">
-                <a href="blog-single.php">Nisi magni odit consequatur autem nulla dolorem</a>
-              </h2>
-
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.php">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.php"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.php">12 Comments</a></li>
-                </ul>
-              </div>
-
-              <div class="entry-content">
-                <p>
-                  Incidunt voluptate sit temporibus aperiam. Quia vitae aut sint ullam quis illum voluptatum et. Quo libero rerum voluptatem pariatur nam.
-                  Ad impedit qui officiis est in non aliquid veniam laborum. Id ipsum qui aut. Sit aliquam et quia molestias laboriosam. Tempora nam odit omnis eum corrupti qui aliquid excepturi molestiae. Facilis et sint quos sed voluptas. Maxime sed tempore enim omnis non alias odio quos distinctio.
-                </p>
-                <div class="read-more">
-                  <a href="blog-single.php">Read More</a>
-                </div>
-              </div>
-
-            </article><!-- End blog entry -->
-
-            <article class="entry" data-aos="fade-up">
-
-              <div class="entry-img">
-                <img src="assets/img/blog-3.jpg" alt="" class="img-fluid">
-              </div>
-
-              <h2 class="entry-title">
-                <a href="blog-single.php">Possimus soluta ut id suscipit ea ut. In quo quia et soluta libero sit sint.</a>
-              </h2>
-
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.php">John Doe</a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.php"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="blog-single.php">12 Comments</a></li>
-                </ul>
-              </div>
-
-              <div class="entry-content">
-                <p>
-                  Aut iste neque ut illum qui perspiciatis similique recusandae non. Fugit autem dolorem labore omnis et. Eum temporibus fugiat voluptate enim tenetur sunt omnis.
-                  Doloremque est saepe laborum aut. Ipsa cupiditate ex harum at recusandae nesciunt. Ut dolores velit.
-                </p>
-                <div class="read-more">
-                  <a href="blog-single.php">Read More</a>
-                </div>
-              </div>
-
-            </article><!-- End blog entry -->
 
             <article class="entry" data-aos="fade-up">
 
@@ -164,6 +118,42 @@
                 <li><a href="#"><i class="icofont-rounded-right"></i></a></li>
               </ul>
             </div>
+
+              <?php
+              $totalDesMessages = App::getDB()->rowCount('SELECT posts.id AS id_posts, title, content, post_type, likes, dislike, favourited, posts.created_at,
+                                                            user_id, category_id, images.id AS id_images, url_miniature, url FROM posts
+                                                     INNER JOIN images
+                                                     ON posts.id=images.post_id
+                                                     ORDER BY posts.id DESC');
+              // On calcule le nombre de pages à créer
+              $nombreDePages  = ceil($totalDesMessages / $nombreDeMessagesParPage);
+              // Puis on fait une boucle pour écrire les liens vers chacune des pages
+              echo '<div class="blog-pagination">
+                    <ul class="justify-content-center">
+                    <li class="disabled"><i class="icofont-rounded-left"></i></li>';
+              /* Boucle sur les pages */
+              for ($i = 1 ; $i <= $nombreDePages ; $i++) {
+                  if ($i < ($pages-3) )
+                      $i = $pages - 3;
+                  if ($i >= $pages + 3 AND $i <= $nombreDePages - 3)
+                      echo "...";
+                  if ($i > ($pages+2) )
+                      $i = $nombreDePages ;
+                  if ($i == $pages )
+                      echo '<li class="active"><a href="#">'.$i.'</a></li>';
+                  else
+                      echo '<li class="page"><a data="pages='.$i.'&MessagesParPage='.$nombreDeMessagesParPage.'" href="#" class="pagination_link" data-title="page '.$i.'">'.$i.'</a></li>';
+              }
+              echo '
+              <li><i class="icofont-rounded-right"></i>
+              <a class="pagination_link" data="pages=';
+              if($i==1)
+                  echo $i;
+              else echo ($i-1);
+              echo '&MessagesParPage='.$nombreDeMessagesParPage.'" href="#" class="pagination_link" title="Suivant">&gt;&gt;</a></li>
+              </ul>
+              </div>';
+              ?>
 
           </div><!-- End blog entries list -->
 

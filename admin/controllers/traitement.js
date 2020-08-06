@@ -208,12 +208,12 @@ $(function() {
                         description_sous_menu.addClass('is-invalid');
                     }
 
-                    result_submenu1.removeClass('valid-feedback')
-                    result_submenu1.addClass('invalid-feedback')
+                    result_submenu1.removeClass('valid-feedback');
+                    result_submenu1.addClass('invalid-feedback');
                     result_submenu1.html(data).show();
 
-                    result_submenu2.removeClass('valid-feedback')
-                    result_submenu2.addClass('invalid-feedback')
+                    result_submenu2.removeClass('valid-feedback');
+                    result_submenu2.addClass('invalid-feedback');
                     result_submenu2.html(data).show();
 
                     cat.html(data).show();

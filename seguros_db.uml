@@ -49,15 +49,15 @@
       <point x="1171.5" y="209.0" />
       <point x="0.0" y="81.0" />
     </edge>
-    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.body" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.caroussel">
-      <point x="0.0" y="-92.0" />
-      <point x="0.0" y="92.0" />
-    </edge>
     <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.page" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.headers">
       <point x="-45.25" y="-92.0" />
       <point x="904.0" y="729.0" />
       <point x="847.75" y="729.0" />
       <point x="38.25" y="136.0" />
+    </edge>
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.body" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.caroussel">
+      <point x="0.0" y="-92.0" />
+      <point x="0.0" y="92.0" />
     </edge>
     <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.comments" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.users">
       <point x="-33.0" y="-92.0" />
@@ -83,11 +83,11 @@
       <point x="0.0" y="-136.0" />
       <point x="0.0" y="191.0" />
     </edge>
-    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.body" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.section">
-      <point x="45.33333333333326" y="-92.0" />
-      <point x="1370.3333333333333" y="209.0" />
-      <point x="1478.5" y="209.0" />
-      <point x="0.0" y="81.0" />
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.posts" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.users">
+      <point x="-47.25" y="-158.0" />
+      <point x="276.25" y="597.0" />
+      <point x="142.25" y="597.0" />
+      <point x="43.75" y="180.0" />
     </edge>
     <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.users" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.newsletters">
       <point x="0.0" y="-180.0" />
@@ -97,11 +97,11 @@
       <point x="47.25" y="-158.0" />
       <point x="0.0" y="81.0" />
     </edge>
-    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.posts" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.users">
-      <point x="-47.25" y="-158.0" />
-      <point x="276.25" y="597.0" />
-      <point x="142.25" y="597.0" />
-      <point x="43.75" y="180.0" />
+    <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.body" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.section">
+      <point x="45.33333333333326" y="-92.0" />
+      <point x="1370.3333333333333" y="209.0" />
+      <point x="1478.5" y="209.0" />
+      <point x="0.0" y="81.0" />
     </edge>
     <edge source="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.posts_tags" target="a2249d4b-3cfc-4f0f-b808-fddf67220d88.TABLE:seguros_db.tags">
       <point x="28.0" y="-38.0" />
